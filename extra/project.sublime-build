@@ -1,0 +1,5 @@
+{
+	"shell" : true,
+	"cmd": [ "powershell", "xcopy", "$file_path", "C:\\xampp\\htdocs\\webbasics", "/E /Y", "&","C:\\PROGRA~2\\Google\\Chrome\\Application\\Chrome", "webbasics.local"]
+
+}
