@@ -7,5 +7,19 @@ define('ROOT_PATH', basename(dirname(__FILE__)) . DS);
 define('ROOT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/cframe/');
 // Bootstrap
 include 'config/include.php';
+include 'services/authenticate.php';
+include 'services/database.php';
 
+$include_path = (DS . ROOT_PATH);
+
+$layouts_path = 'views\\' . 'layouts\\';
+
+include $layouts_path . 'header.php';
+include_once 'controllers\\BaseController.php';
+
+$base_controller = new \Controllers\BaseController();
+
+include_once 'services/router.php';
+
+$base_controller->dumpInfo();
 ?>

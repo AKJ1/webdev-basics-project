@@ -1,0 +1,1 @@
+<section><img src="http://www.thetimes.co.uk/tto/multimedia/archive/00342/114240651_cat_342943c.jpg" alt=""></section>
