@@ -18,12 +18,13 @@ class BaseController {
 		$class_name = '\Controllers\BaseController',
 		$model = 'base') {
 		$this->class_name = $class_name;
-		$this->views_dir = $views_dir;
-		$this->model = $model;
+		$this->views_dir  = $views_dir;
+		$this->model      = $model;
 	}
 
 	public function home() {
-		include_once $this->views_dir . "home.php";
+		include_once $this->views_dir . 'home.php';
+		include_once '\views\layouts\\' . 'footer.php';
 	}
 
 	public function login() {
@@ -42,6 +43,17 @@ class BaseController {
 
 		echo "string";
 		var_dump($this->views_dir);
+	}
+
+	public function render_page($method, $params) {
+		include_once 'views/layouts/header.php';
+		call_user_func_array(array($this, $method), array($params));
+		include_once 'views/layouts/footer.php';
+
+	}
+
+	public function not_found() {
+		include_once $this->views_dir . "404.php";
 	}
 }
 

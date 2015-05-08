@@ -16,10 +16,10 @@ $layouts_path = 'views\\' . 'layouts\\';
 
 include $layouts_path . 'header.php';
 include_once 'controllers\\BaseController.php';
+include_once 'models\\BaseModel.php';
 
 $base_controller = new \Controllers\BaseController();
 
 include_once 'services/router.php';
 
-$base_controller->dumpInfo();
 ?>
