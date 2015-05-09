@@ -13,22 +13,33 @@ class AccountModel extends BaseModel
 				'table' => 'users',
 				'columns' => array('id, user_name, is_admin')
 			));
-		
+		mysqli_report(MYSQLI_REPORT_ALL);
 	}
 
-	public function login($user, $password){
+	public function login($username, $password){
 		
-		$hashed_password = hash_password($password, PASSWORD_BCRYPT);
-		$statement = $this->dbconn->prepare('SELECT id, is_admin FROM users WHERE username = ? AND password = ?');
-		$statement->bind_param('ss', $username, $hashed_password);
+		$username = mysql_real_escape_string($username);
+		
+		$statement = $this->dbconn->prepare('SELECT password_hash, id, is_admin FROM users WHERE user_name = ?');
+		$statement->bind_param('s', $username );
+
+		
 
 		$statement->execute();
 		$result = $statement->get_result();
 
-		if ($row = $result_set->fetch_assoc()) {					
-			$_SESSION['user_id'] = $user_id;
-			$_SESSION['username'] = $username;
-			$_SESSION['is_admin'] = $is_admin;
+		
+		if ($row = $result->fetch_assoc()) {					
+			if (password_verify($password, $row['password_hash'])) {
+				session_start();
+				$_SESSION['user_id'] = $row['id'];
+				$_SESSION['user_name'] = $username;
+				$_SESSION['is_admin'] = $row['is_admin'];
+			}else{
+				echo "UNSUCESSFUL LOGIN! Wrong password.";	
+			}			
+		}else{
+			echo "UNSUCESSFUL LOGIN! The account doesnt exist.";
 		}
 
 	}
@@ -59,13 +70,15 @@ class AccountModel extends BaseModel
 			if ($valid) {
 				$clean_user = mysql_real_escape_string($username);
 				$clean_email = mysql_real_escape_string($email);
-				$hashed_password = hash_password($password);
-				$statement = $this->dbconn->prepare("INSERT INTO ('$table') (user_name, password_hash ,email) 
+				$hashed_password = password_hash($password, PASSWORD_BCRYPT);
+				$statement = $this->dbconn->prepare("INSERT INTO $this->table (user_name, password_hash ,email) 
 											   VALUES ('$username', '$hashed_password', '$email') ");
 				$statement->execute();
 				$result = $statement->get_result();
 
-				var_dump($result);
+				if ($result == false) {
+					echo "Sucessful registration, please <a href='/Account/Login'>Login</a>"; 
+				}
 			}
 		}else{
 			echo "please fill in all required fields.";

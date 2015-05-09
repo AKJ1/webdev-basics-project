@@ -16,5 +16,8 @@ class ImageController extends \Controllers\BaseController {
 	public function view($image) {
 		include_once ROOT_DIR . $this->views_dir . 'view-image.php';
 	}
+	public function upload(){
+		$this->home();
+	}	
 }
 ?>

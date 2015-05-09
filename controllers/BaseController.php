@@ -19,7 +19,17 @@ class BaseController {
 		$model = 'base') {
 		$this->class_name = $class_name;
 		$this->views_dir  = $views_dir;
-		$this->model      = $model;
+		$this->model      = ucfirst($model);
+
+		include_once ROOT_DIR . "models\\{$this->model}Model" . '.php';
+
+
+		$model_class = "\Models\\" . $this->model . "Model";		
+		// $this->model = new $model_class(array('table'=>'none'));
+	}
+	function __destruct(){
+		unset($this->model);
+		unset($this);
 	}
 
 	public function home() {
@@ -27,9 +37,6 @@ class BaseController {
 		include_once '\views\layouts\\' . 'footer.php';
 	}
 
-	public function login() {
-		include_once $this->views_dir . "login.php";
-	}
 
 	public function dumpInfo() {
 		echo "Views Dir Info";

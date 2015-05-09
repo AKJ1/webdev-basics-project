@@ -6,7 +6,6 @@ class Authenticate {
 
 	function __construct() {
 		session_set_cookie_params(1800, "/");
-		session_start();
 	}
 
 	public function get_instance() {
@@ -19,26 +18,21 @@ class Authenticate {
 	}
 
 	public function is_logged_in() {
-		if (isset($_SESSION['username'])) {
+		if (isset($_SESSION['user_name'])) {
 			return true;
 		}
 		return false;
 	}
 	
 	public function is_administrator() {
-		if (isset($_SESSION['is_admin'])) {
-			if ($_SESSION['is_admin']['value']) {
-				if (isset($login_time)) {
-					if ($_SESSION['is_admin']['validation'] == md5($_SESSION['login_time'])) {
-						return true;
-					}
-				}
-			}
+		if (isset($_SESSION['is_admin']) == true) {
+			return true;
 		}
 		return false;
 	}
 	public function logout() {
 		session_destroy();
+		header("Location: " . '/');
 	}
 
 	public function get_logged_user() {

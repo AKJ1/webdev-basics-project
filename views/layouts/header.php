@@ -23,8 +23,10 @@
 					if (\Services\Authenticate::get_instance()->is_logged_in()) {
 						echo "Welcome, " . $_SESSION['user_name'] . "!";
 					} else {
-						echo "Welcome, Guest, Would you like to " .
-						'<a href="/Account/Register">Register</a>?';
+						echo "Welcome, Guest, Please  " .
+						'<a href="/Account/Login">Login</a>' .
+						' or ' .
+						'<a href="/Account/Register">Register</a>';
 					}
 				?>
 				</div>

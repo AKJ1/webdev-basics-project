@@ -3,7 +3,7 @@
 namespace Services;
 class Database
 {
-	protected $db = null;
+	private static $db = null;
 	
 	function __construct()
 	{
@@ -12,7 +12,7 @@ class Database
 		$password = DB_PASSWORD;
 		$databse = DB_DATABASE;
 
-		$db = new \mysqli ($host,$username,$password,$database);
+		$this->db = new \mysqli($host,$username,$password,$database);
 	}
 
 	public function get_instance(){
@@ -25,7 +25,7 @@ class Database
 	}
 
 	public function get_db(){
-		return self::$db;
+		return this::$db;
 	}
 }
 ?>

@@ -66,9 +66,6 @@ if (isset($controller) && file_exists('controllers\\' . ucfirst($controller) . '
 	$admin_folder = $admin_routing ? 'admin\\Admin' : '';
 
 	include_once 'controllers\\' . $admin_folder . $controller . 'Controller' . '.php';
-	if (file_exists('models\\' . ucfirst($controller) . 'Model' . '.php' )) {
-		include_once 'models\\' . ucfirst($controller) . 'Model' . '.php';
-	}
 	$controller_class = 'Controllers\\' . $controller . 'Controller';
 	$controller_instance = new $controller_class();
 

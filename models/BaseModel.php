@@ -6,27 +6,34 @@
 		protected $columns;
 		protected $limit;
 		protected $dbconn;
+		protected $database;
 		
-		public function __construct( $args = array() ) {
+		function __construct( $args = array() ) {
+
+			// echo "</br>";
+			// var_dump($args);
 			$args = array_merge( array(
+				'table' => 'none',
 				'where' => '',
 				'columns' => '*',
 				'limit' => 0
 			), $args );
-			
-			if ( ! isset( $args['table'] ) ) {
-				die( 'Table not defined. Please define a model table.' );
-			}
-			
+			// echo "</br>";
+			// var_dump($args);
+			// if ( ! isset( $args['table'] ) ) {
+			// 	die( 'Table not defined. Please define a model table.' );
+			// }
+			// // debug_backtrace();
 			extract( $args );
 			
 			$this->table = $table;
 			$this->where = $where;
 			$this->columns = $columns;
 			$this->limit = $limit;
-			
-			$db = \Services\Database::get_instance();
-			$this->dbconn = $db::get_db();
+
+			// $db = \Services\Database::get_instance();
+			// var_dump($db);
+			$this->dbconn = new \mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 		}
 		
 		public function get( $id ) {

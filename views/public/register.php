@@ -8,7 +8,7 @@
 		<label for="password">Repeat Password</label>
 		<input type="password" name="repeat-password" class="form-control" id="repeat-password">
 		<label for="email" name="email">Email</label>
-		<input type="input" class="form-control" id="email">
+		<input type="input" name="email" class="form-control" id="email">
 		<button type="submit" class="btn btn-primary">Register</button>
 		<button type="reset" class="btn btn-danger">Reset</button>
 	</fieldset>
