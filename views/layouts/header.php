@@ -5,7 +5,9 @@
         <meta name="description" content="Project for Web Basics PHP MVC framework">
         <title>MVC Basics Project</title>
         <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/style.css">
         <script type="text/javascript" src="/js/jquery.min.js"></script>
+        <script src="/js/dropzone.js"></script>
     </head>
     <header>
        	<div class="container-fluid">
@@ -16,7 +18,8 @@
 	   			<ul class="nav navbar-nav">
 	   				<li><a href="/Album/Upload">Upload Album</a></li>
 		   			<li><a href="/Image/Upload">Upload Image</a></li>
-		   			<li><a href="/Images/View">View</a></li>
+		   			<li><a href="/Album/Gallery">Browse Albums</a></li>
+		   			<li><a href="/Image/Gallery/0">Browse Images</a></li>
 	   			</ul>
 				<div class="nav navbar-nav navbar-right">
 				<?php

@@ -25,7 +25,7 @@ class BaseController {
 
 
 		$model_class = "\Models\\" . $this->model . "Model";		
-		// $this->model = new $model_class(array('table'=>'none'));
+		$this->model = new $model_class(array('table'=>'none'));
 	}
 	function __destruct(){
 		unset($this->model);
@@ -54,7 +54,7 @@ class BaseController {
 
 	public function render_page($method, $params) {
 		include_once 'views/layouts/header.php';
-		call_user_func_array(array($this, $method), array($params));
+		call_user_func_array(array($this, $method), $params);
 		include_once 'views/layouts/footer.php';
 
 	}

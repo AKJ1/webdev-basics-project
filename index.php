@@ -6,7 +6,7 @@ define('DS', DIRECTORY_SEPARATOR);
 define('ROOT_DIR', dirname(__FILE__) . DS);
 			echo "Got past 1";
 define('ROOT_PATH', basename(dirname(__FILE__)) . DS);
-define('ROOT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/cframe/');
+define('ROOT_URL', 'http://' . $_SERVER['HTTP_HOST']);
 // Bootstrap
 include 'config/include.php';
 include 'services/authenticate.php';
@@ -22,4 +22,4 @@ include_once 'controllers\\BaseController.php';
 $base_controller = new \Controllers\BaseController();
 
 include_once 'services/router.php';
-?>
+?>	

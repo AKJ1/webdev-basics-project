@@ -58,17 +58,19 @@
 			foreach( $pairs as $key => $value ) {
 				$values[] = "'" . $this->dbconn->real_escape_string( $value ) . "'";	
 			}
+			mysqli_report(MYSQLI_REPORT_ALL);
 			
 			$keys = implode( $keys, ',' );
 			$values = implode( $values, ',' );
 			
-			$query = "insert into {$this->table}($keys) values($values)";
+			$statement = $this->dbconn->prepare("insert into {$this->table}($keys) values($values)");
 			
-	// 		var_dump($query);
+			// var_dump($query);
+			$statement->execute();
+			$result = $statement->get_result();
 			
-			$this->dbconn->query( $query );
-			
-			return $this->dbconn->affected_rows;
+			// $this->dbconn->execute( $query );
+			return $result;
 		}
 		
 		public function delete( $id ) {

@@ -42,7 +42,7 @@ class AccountController extends \Controllers\BaseController {
 	if (isset($_POST['repeat-password'])) {
 		$repeat = htmlspecialchars($_POST['repeat-password']);
 	}
-	if (isset($_POST['emai'])) {
+	if (isset($_POST['email'])) {
 		$email = htmlspecialchars($_POST['email']);
 	}
 	if (!isset($username) &&
@@ -53,10 +53,10 @@ class AccountController extends \Controllers\BaseController {
 	} else {
 		if (!(\Services\Authenticate::get_instance()->is_logged_in())) {
 			$validity = false;
-			if (!isset($reg_username) ||
-					!isset($reg_password) ||
-					!isset($reg_repeat) ||
-					!isset($reg_email)) {
+			if (!isset($username) ||
+					!isset($password) ||
+					!isset($repeat) ||
+					!isset($email)) {
 					echo "<p class='red'>not all fields filled</p>";
 			} else {
 				$validity = true;

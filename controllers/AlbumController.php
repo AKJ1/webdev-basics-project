@@ -12,5 +12,9 @@ class AlbumController extends \Controllers\BaseController {
 	public function home() {
 		include_once ROOT_DIR . $this->views_dir . 'home.php';
 	}
+
+	public function upload(){
+		include_once ROOT_DIR . $this->views_dir . 'upload.php';
+	}
 }
 ?>

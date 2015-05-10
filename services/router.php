@@ -37,7 +37,7 @@ if ($request != null) {
 		unset($request_components[0]);
 		unset($request_components[1]);
 
-		$param = array($request_components);
+		$param = array_values($request_components);
 
 		// foreach ($request_components as $key => $value) {
 		// 	$param = array_push($param, $value);
@@ -70,7 +70,7 @@ if (isset($controller) && file_exists('controllers\\' . ucfirst($controller) . '
 	$controller_instance = new $controller_class();
 
 	if (method_exists($controller_instance, $method)) {
-		$args = array($method, array($param));
+		$args = array($method, $param);
 		call_user_func_array(array($controller_instance, 'render_page'), $args);
 	} else {
 		call_user_func_array(array($controller_instance, 'home'), array());
