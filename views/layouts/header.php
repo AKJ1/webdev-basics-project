@@ -8,12 +8,15 @@
         <link rel="stylesheet" href="/css/style.css">
         <script type="text/javascript" src="/js/jquery.min.js"></script>
         <script src="/js/dropzone.js"></script>
+        <!-- <script src="/js/noty/jquery.noty.js"></script>
+        <script src="/js/noty/themes/default.js"></script> -->
     </head>
     <header>
        	<div class="container-fluid">
 	   		<div class="navbar-header">
 	   			<a href="/" class="navbar-brand">Cool Images Site</a>
 	   		</div>
+
 	   		<div class="navbar-collapse collapse" id="navbar">
 	   			<ul class="nav navbar-nav">
 	   				<li><a href="/Album/Upload">Upload Album</a></li>

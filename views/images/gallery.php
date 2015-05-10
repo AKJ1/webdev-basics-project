@@ -10,16 +10,19 @@
 
 		<?php } }?>
 	</div>
-	<div >
-		
-		<?php echo ('<a href="' . $page+1 . '"' . '><button class="btn btn-primary">Next Page</button></a>');?>
+	<div  class="col-md-10 col-md-offset-1" >
 		<?php if ($page > 0) {
 			
 
-		echo '<a href="' .$page-1 .'"' . '><button class="btn btn-primary">Prev Page</button></a>';
+		echo '<a href="' . strval($page-1) .'"' . '><button class="btn btn-primary ">Prev Page</button></a>';
 			
 		} ?>
+
+		<?php echo ("<a href='" . strval($page+1) . '\'><button class="btn btn-primary pull-right">Next Page</button></a>');?>
+
 	</div>
+
+		
 
 </section>
 
